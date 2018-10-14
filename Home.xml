@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol>525</defaultcontrol>
+    <backgroundcolor>0</backgroundcolor>
+    <onload condition="!Skin.HasSetting(Skin.Initialization)">SetProperty(Skin.Initialization,1,startup)</onload>
+    <onload condition="!Skin.HasSetting(Skin.Initialization) | String.IsEmpty(Window(startup).Property(Started))">ReplaceWindow(startup)</onload>
+
+	<include condition="!String.IsEmpty(Window.Property(CategoryChanged))">FocusSettingsCategory</include>
+
+    <onunload>SetProperty(HomeCategory,$INFO[Container(20).CurrentItem])</onunload>
+
+    <controls>
+	
+        <!-- Home screen-->
+        <include condition="String.IsEqual(Skin.String(HomeScreen),metro) | String.IsEmpty(Skin.String(HomeScreen))">CommonItemsHome</include>
+        <include condition="String.IsEqual(Skin.String(HomeScreen),metro) | String.IsEmpty(Skin.String(HomeScreen))">HomeCategoryLabels</include>
+        <include condition="String.IsEqual(Skin.String(HomeScreen),metro) | String.IsEmpty(Skin.String(HomeScreen))">HomeItems</include>
+        <include condition="String.IsEqual(Skin.String(HomeScreen),metro) | String.IsEmpty(Skin.String(HomeScreen))">HomeProfileInfo</include>
+        <include condition="String.IsEqual(Skin.String(HomeScreen),metro) | String.IsEmpty(Skin.String(HomeScreen))">HomeShutdownFavouritesButtons</include>
+		
+        <!-- Home screen Horizontal-->
+        <include condition="String.IsEqual(Skin.String(HomeScreen),horizontal)">CommonItemsHomeHorizontal</include>
+        <include condition="String.IsEqual(Skin.String(HomeScreen),horizontal)">HomeCategoryLabelsHorizontal</include>
+        <include condition="String.IsEqual(Skin.String(HomeScreen),horizontal)">HomeSubMenuMoviesHorizontal</include>
+        <include condition="String.IsEqual(Skin.String(HomeScreen),horizontal)">HomeSubMenuTVShowsHorizontal</include>
+        <include condition="String.IsEqual(Skin.String(HomeScreen),horizontal)">HomeSubMenuMusicHorizontal</include>
+        <include condition="String.IsEqual(Skin.String(HomeScreen),horizontal)">HomeSubMenuLiveTVHorizontal</include>
+        <include condition="String.IsEqual(Skin.String(HomeScreen),horizontal)">HomeSubMenuSettingsHorizontal</include>
+        <include condition="String.IsEqual(Skin.String(HomeScreen),horizontal)">HomeProfileInfoHorizontal</include>
+        <include condition="String.IsEqual(Skin.String(HomeScreen),horizontal)">HomeShutdownFavouritesButtonsHorizontal</include>
+		
+		<!-- Shared -->
+        <include>Common-Home-Info</include>
+    </controls>
+</window>

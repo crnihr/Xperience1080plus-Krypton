@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+<!-- ======================= -->
+<!-- Home Sub Menu Animation -->
+<!-- ======================= -->
+
+    <include name="SubMenuAnimationHorizontal">
+		<animation type="WindowOpen">
+			<effect type="fade" start="0" end="100" time="300" tween="sine" easing="in"  />
+			<effect type="slide" start="0,-75" end="0,0" time="350" tween="cubic" easing="out" />
+		</animation>
+		<animation type="WindowClose">
+			<effect type="fade" start="100" end="0" time="250" tween="sine" easing="out" />
+			<effect type="slide" start="0,0" end="0,-75" time="300" tween="sine" easing="out" />
+		</animation>
+        <animation type="Conditional" condition="Control.HasFocus(23)">
+             <effect type="fade" start="0" end="100" tween="sine" easing="inout" time="200" />
+             <effect type="slide" start="0,-15" end="0,0" time="200" tween="sine" easing="out" />
+        </animation>
+        <animation type="Conditional" condition="!Control.HasFocus(23)">
+            <effect type="fade" start="100" end="0" time="0" tween="sine" easing="out" />
+            <effect type="slide" start="0,0" end="0,-15" time="250" tween="cubic" easing="in" />
+        </animation>
+    </include>
+
+	
+<!-- ============== -->
+<!-- Wrap List Vars -->
+<!-- ============== -->
+
+    <include name="SubMenuWraplistVarsHorizontal">
+        <posx>355</posx>
+        <posy>583</posy>
+        <width>1080</width>
+        <height>90</height>
+        <onup>20</onup>
+        <ondown>21</ondown>
+        <onleft>23</onleft>
+        <onright>23</onright>
+        <orientation>horizontal</orientation>
+        <focusposition>2</focusposition>
+        <scrolltime>200</scrolltime>
+    </include>
+
+<!-- ================ -->
+<!-- Item Layout Vars -->
+<!-- ================ -->
+    
+    <include name="SubMenuItemLayoutVarsHorizontal">
+        <control type="label">
+            <posx>95</posx>
+            <posy>0</posy>
+            <width>180</width>
+            <height>55</height>
+            <align>center</align>
+            <aligny>center</aligny>
+            <font>Font-Condensed-S30</font>
+            <textcolor>ee000000</textcolor>
+            <label>$INFO[ListItem.label]</label>
+            <animation effect="fade" end="40" time="0" condition="true">Conditional</animation>
+        </control>
+        <control type="image">
+            <posx>280</posx>
+            <posy>10</posy>
+            <width>2</width>
+            <height>35</height>
+            <colordiffuse>35000000</colordiffuse>
+            <texture>windows/common/black.png</texture>
+        </control>
+    </include>
+    
+<!-- =================== -->
+<!-- Focused Layout Vars -->
+<!-- =================== -->
+    
+    <include name="SubMenuFocusedLayoutVarsHorizontal">
+        <control type="label">
+            <posx>95</posx>
+            <posy>0</posy>
+            <width>180</width>
+            <height>55</height>
+            <align>center</align>
+            <aligny>center</aligny>
+            <font>Font-Condensed-S30</font>
+            <textcolor>ee000000</textcolor>
+            <label>$INFO[ListItem.label]</label>
+            <animation type="Focus" condition="Container(23).OnNext | Container(23).OnPrevious">
+                <effect type="fade" start="40" end="100" time="350" tween="sine" easing="out" />
+            </animation>
+            <animation type="Unfocus" condition="Container(23).OnNext | Container(23).OnPrevious">
+                <effect type="fade" start="100" end="40" time="250" tween="sine" easing="out" />
+            </animation>
+        </control>
+        <control type="image">
+            <posx>280</posx>
+            <posy>10</posy>
+            <width>2</width>
+            <height>35</height>
+            <colordiffuse>35000000</colordiffuse>
+            <texture>windows/common/black.png</texture>
+        </control>
+    </include>
+	
+	
+<!-- ==================== -->
+<!-- Home Sub Menu Movies -->
+<!-- ==================== -->
+    
+    <include name="HomeSubMenuMoviesHorizontal">
+		<control type="group">
+			<include>SubMenuAnimationHorizontal</include>
+			<include>listEndAnimation</include>
+			<visible>![Container(20).OnNext | Container(20).OnPrevious] + !IsEmpty(Container(20).ListItem.Property(movies))</visible>
+
+			<control type="image">
+				<posx>0</posx>
+				<posy>585</posy>
+				<width>1920</width>
+				<height>108</height>
+				<texture>special://skin/extras/fade/main_menu_submenu.png</texture>
+			</control>
+			
+			<control type="wraplist" id="23">
+				<description>SubMenu Container Movies</description>
+				<include>SubMenuWraplistVarsHorizontal</include>
+				<itemlayout width="200" height="55">
+					<control type="group">
+						<include>SubMenuItemLayoutVarsHorizontal</include>
+					</control>
+				</itemlayout>
+				<focusedlayout width="200" height="55">
+					<control type="group">
+						<include>SubMenuFocusedLayoutVarsHorizontal</include>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="1">
+						<label>$LOCALIZE[3]</label>
+						<onclick>ActivateWindow(videos,root)</onclick>
+					</item>
+					<item id="2">
+					<label>$LOCALIZE[744]</label>
+						<onclick>ActivateWindow(videos,files,return)</onclick>
+					</item>
+					<item id="3">
+						<label>Update</label>
+						<onclick condition="!Library.IsScanningVideo">UpdateLibrary(video)</onclick>
+					</item>
+					<item id="4">
+						<label>$LOCALIZE[652]</label>
+						<onclick>ActivateWindow(videos,movieyears,return)</onclick>
+					</item>
+					<item id="5">
+						<label>$LOCALIZE[344]</label>
+						<onclick>ActivateWindow(videos,movieactors,return)</onclick>
+					</item>
+					<item id="6">
+						<label>$LOCALIZE[20348]</label>
+						<onclick>ActivateWindow(videos,moviedirectors,return)</onclick>
+					</item>
+					<item id="7">
+						<label>$LOCALIZE[20388]</label>
+						<onclick>ActivateWindow(videos,moviestudios,return)</onclick>
+					</item>
+					<item id="8">
+						<label>$LOCALIZE[20451]</label>
+						<onclick>ActivateWindow(videos,moviecountries,return)</onclick>
+					</item>
+					<item id="9">
+						<label>$LOCALIZE[20459]</label>
+						<onclick>ActivateWindow(videos,movietags,return)</onclick>
+					</item>
+					<item id="10">
+						<label>$LOCALIZE[135]</label>
+						<onclick>ActivateWindow(videos,moviegenres,return)</onclick>
+					</item>
+				</content>
+			</control>
+        </control>
+	 </include>
+	
+<!-- ==================== -->
+<!-- Home Sub Menu TV Shows -->
+<!-- ==================== -->
+    
+    <include name="HomeSubMenuTVShowsHorizontal">
+		<control type="group">
+			<include>SubMenuAnimationHorizontal</include>
+			<include>listEndAnimation</include>
+			<visible>![Container(20).OnNext | Container(20).OnPrevious] + !IsEmpty(Container(20).ListItem.Property(tvshows))</visible>
+
+			<control type="image">
+				<posx>0</posx>
+				<posy>585</posy>
+				<width>1920</width>
+				<height>108</height>
+				<texture>special://skin/extras/fade/main_menu_submenu.png</texture>
+			</control>
+			
+			<control type="wraplist" id="23">
+				<description>SubMenu Container TVShows</description>
+				<include>SubMenuWraplistVarsHorizontal</include>
+				<itemlayout width="200" height="55">
+					<control type="group">
+						<include>SubMenuItemLayoutVarsHorizontal</include>
+					</control>
+				</itemlayout>
+				<focusedlayout width="200" height="55">
+					<control type="group">
+						<include>SubMenuFocusedLayoutVarsHorizontal</include>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="1">
+						<label>$LOCALIZE[3]</label>
+						<onclick>ActivateWindow(videos,root)</onclick>
+					</item>
+					<item id="2">
+						<label>$LOCALIZE[744]</label>
+						<onclick>ActivateWindow(videos,files,return)</onclick>
+					</item>
+					<item id="3">
+						<label>$LOCALIZE[31943] ($INFO[Window.Property(NextAired.TodayTotal)])</label>
+						<onclick>XBMC.RunScript(script.tv.show.next.aired)</onclick>
+					</item>
+					<item id="4">
+						<label>$LOCALIZE[135]</label>
+						<onclick>ActivateWindow(videos,tvshowgenres,return)</onclick>
+					</item>
+					<item id="5">
+						<label>$LOCALIZE[652]</label>
+						<onclick>ActivateWindow(videos,tvshowyears,return)</onclick>
+					</item>
+					<item id="6">
+						<label>$LOCALIZE[344]</label>
+						<onclick>ActivateWindow(videos,tvshowactors,return)</onclick>
+					</item>
+					<item id="7">
+						<label>$LOCALIZE[20388]</label>
+						<onclick>ActivateWindow(videos,tvshowstudios,return)</onclick>
+					</item>
+					<item id="8">
+						<label>$LOCALIZE[20459]</label>
+						<onclick>ActivateWindow(videos,tvshowtags,return)</onclick>
+					</item>
+					<item id="9">
+						<label>Update</label>
+						<onclick condition="!Library.IsScanningVideo">UpdateLibrary(video)</onclick>
+					</item>
+				</content>
+			</control>
+        </control>
+	 </include>
+	 
+<!-- ==================== -->
+<!-- Home Sub Menu Music -->
+<!-- ==================== -->
+	
+    <include name="HomeSubMenuMusicHorizontal">
+		<control type="group">
+			<include>SubMenuAnimationHorizontal</include>
+			<include>listEndAnimation</include>
+			<visible>![Container(20).OnNext | Container(20).OnPrevious] + !IsEmpty(Container(20).ListItem.Property(music))</visible>
+
+			<control type="image">
+				<posx>0</posx>
+				<posy>585</posy>
+				<width>1920</width>
+				<height>108</height>
+				<texture>special://skin/extras/fade/main_menu_submenu.png</texture>
+			</control>
+			
+			<control type="wraplist" id="23">
+				<description>SubMenu Container Music</description>
+				<include>SubMenuWraplistVarsHorizontal</include>
+				<itemlayout width="200" height="55">
+					<control type="group">
+						<include>SubMenuItemLayoutVarsHorizontal</include>
+					</control>
+				</itemlayout>
+				<focusedlayout width="200" height="55">
+					<control type="group">
+						<include>SubMenuFocusedLayoutVarsHorizontal</include>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="1">
+						<label>$LOCALIZE[744]</label>
+						<onclick>ActivateWindow(Music,Files,return)</onclick>
+					</item>
+					<item id="2">
+					<label>$LOCALIZE[135]</label>
+						<onclick>ActivateWindow(Music,genres,return)</onclick>
+					</item>
+					<item id="3">
+						<label>$LOCALIZE[133]</label>
+						<onclick>ActivateWindow(Music,artists,return)</onclick>
+					</item>
+					<item id="4">
+						<label>$LOCALIZE[132]</label>
+						<onclick>ActivateWindow(Music,albums,return)</onclick>
+					</item>
+					<item id="5">
+						<label>$LOCALIZE[134]</label>
+						<onclick>ActivateWindow(Music,songs,return)</onclick>
+					</item>
+					<item id="6">
+						<label>$LOCALIZE[652]</label>
+						<onclick>ActivateWindow(Music,years,return)</onclick>
+					</item>
+					<item id="7">
+						<label>$LOCALIZE[271]</label>
+						<onclick>ActivateWindow(Music,top100,return)</onclick>
+					</item>
+					<item id="8">
+						<label>$LOCALIZE[136]</label>
+						<onclick>ActivateWindow(Music,playlists,return)</onclick>
+					</item>
+					<item id="9">
+						<label>Update</label>
+						<onclick condition="!Library.IsScanningVideo">UpdateLibrary(music)</onclick>
+					</item>
+				</content>
+			</control>
+        </control>
+	 </include>
+
+<!-- ==================== -->
+<!-- Home Sub Menu LiveTV -->
+<!-- ==================== -->
+	
+    <include name="HomeSubMenuLiveTVHorizontal">
+		<control type="group">
+			<include>SubMenuAnimationHorizontal</include>
+			<include>listEndAnimation</include>
+            <visible>![Container(20).OnNext | Container(20).OnPrevious] + Container(20).HasFocus(9) + System.GetBool(pvrmanager.enabled)</visible>
+			
+			<control type="image">
+				<posx>0</posx>
+				<posy>585</posy>
+				<width>1920</width>
+				<height>108</height>
+				<texture>special://skin/extras/fade/main_menu_submenu.png</texture>
+			</control>
+			
+			<control type="wraplist" id="23">
+				<description>SubMenu Container Music</description>
+				<include>SubMenuWraplistVarsHorizontal</include>
+				<itemlayout width="200" height="55">
+					<control type="group">
+						<include>SubMenuItemLayoutVarsHorizontal</include>
+					</control>
+				</itemlayout>
+				<focusedlayout width="200" height="55">
+					<control type="group">
+						<include>SubMenuFocusedLayoutVarsHorizontal</include>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="1">
+						<label>$LOCALIZE[19023]</label>
+						<onclick>ActivateWindow(tvchannels)</onclick>
+					</item>
+					<item id="2">
+					<label>$LOCALIZE[31014]</label>
+						<onclick>ActivateWindow(radiochannels)</onclick>
+					</item>
+					<item id="3">
+						<label>$LOCALIZE[19069]</label>
+						<onclick>ActivateWindow(tvguide)</onclick>
+					</item>
+					<item id="4">
+						<label>$LOCALIZE[19163]</label>
+						<onclick>ActivateWindow(tvrecordings)</onclick>
+					</item>
+					<item id="5">
+						<label>$LOCALIZE[19040]</label>
+						<onclick>ActivateWindow(tvtimers)</onclick>
+					</item>
+					<item id="6">
+						<label>$LOCALIZE[19138]</label>
+						<onclick>ActivateWindow(tvtimerrules)</onclick>
+					</item>
+					<item id="7">
+						<label>$LOCALIZE[137]</label>
+						<onclick>ActivateWindow(tvsearch)</onclick>
+					</item>
+				</content>
+			</control>
+        </control>
+	 </include>
+
+<!-- ==================== -->
+<!-- Home Sub Menu Settings -->
+<!-- ==================== -->
+	
+    <include name="HomeSubMenuSettingsHorizontal">
+		<control type="group">
+			<include>SubMenuAnimationHorizontal</include>
+			<include>listEndAnimation</include>
+            <visible>![Container(20).OnNext | Container(20).OnPrevious] + !IsEmpty(Container(20).ListItem.Property(settings))</visible>
+			
+			<control type="image">
+				<posx>0</posx>
+				<posy>585</posy>
+				<width>1920</width>
+				<height>108</height>
+				<texture>special://skin/extras/fade/main_menu_submenu.png</texture>
+			</control>
+			
+			<control type="wraplist" id="23">
+				<description>SubMenu Container Music</description>
+				<include>SubMenuWraplistVarsHorizontal</include>
+				<itemlayout width="200" height="55">
+					<control type="group">
+						<include>SubMenuItemLayoutVarsHorizontal</include>
+					</control>
+				</itemlayout>
+				<focusedlayout width="200" height="55">
+					<control type="group">
+						<include>SubMenuFocusedLayoutVarsHorizontal</include>
+					</control>
+				</focusedlayout>
+				<content>
+					<item id="1">
+						<label>$LOCALIZE[13200]</label>
+                        <onclick>ActivateWindow(profiles)</onclick>
+					</item>
+					<item id="2">
+						<label>$LOCALIZE[14200]</label>
+                        <onclick>ActivateWindow(PlayerSettings)</onclick>
+					</item>
+					<item id="3">
+						<label>$LOCALIZE[31111]</label>
+                        <onclick>ActivateWindow(skinsettings)</onclick>
+					</item>
+					<item id="11">
+						<label>Home Metro</label>
+						<onclick>Skin.SetString(HomeScreen,metro)</onclick>
+                        <onclick>Reloadskin</onclick>
+					</item>
+					<item id="12">
+						<label>Hide Arrow</label>
+						<onclick>Skin.ToggleSetting(HideHomeSubmenuArrow.Hide)</onclick>
+						<visible>!Skin.HasSetting(HideHomeSubmenuArrow.Hide)</visible>
+					</item>
+					<item id="12">
+						<label>Show Arrow</label>
+						<onclick>Skin.ToggleSetting(HideHomeSubmenuArrow.Hide)</onclick>
+						<visible>Skin.HasSetting(HideHomeSubmenuArrow.Hide)</visible>
+					</item>
+					<item id="13">
+						<label>Hide Stage</label>
+						<onclick>Skin.ToggleSetting(BackgroundStage.Hide)</onclick>
+						<visible>Skin.HasSetting(BackgroundStage.Hide)</visible>
+					</item>
+					<item id="13">
+						<label>Show Stage</label>
+						<onclick>Skin.ToggleSetting(BackgroundStage.Hide)</onclick>
+						<visible>!Skin.HasSetting(BackgroundStage.Hide)</visible>
+					</item>
+					<item id="14">
+						<label>Hide $LOCALIZE[137]</label>
+						<onclick>Skin.ToggleSetting(MainMenuSearch.Hide)</onclick>
+						<visible>Skin.HasSetting(MainMenuSearch.Hide) + System.HasAddon(script.globalsearch)</visible>
+					</item>
+					<item id="14">
+						<label>Show $LOCALIZE[137]</label>
+						<onclick>Skin.ToggleSetting(MainMenuSearch.Hide)</onclick>
+						<visible>!Skin.HasSetting(MainMenuSearch.Hide) + System.HasAddon(script.globalsearch)</visible>
+					</item>
+					<item id="15">
+						<label>Profile Image</label>
+						<onclick>Skin.ToggleSetting(HideHomeProfileInfo)</onclick>
+					</item>
+					<item id="4">
+						<label>$LOCALIZE[14206]</label>
+                        <onclick>ActivateWindow(InterfaceSettings)</onclick>
+					</item>
+					<item id="5">
+						<label>$LOCALIZE[14211]</label>
+                        <onclick>ActivateWindow(MediaSettings)</onclick>
+					</item>
+					<item id="6">
+						<label>$LOCALIZE[24001]</label>
+                        <onclick>ActivateWindow(addonbrowser)</onclick>
+					</item>
+					<item id="7">
+						<label>$LOCALIZE[31220]</label>
+                        <onclick>ActivateWindow(pvrsettings)</onclick>
+					</item>
+					<item id="8">
+						<label>$LOCALIZE[13000]</label>
+                        <onclick>ActivateWindow(systemsettings)</onclick>
+					</item>
+					<item id="9">
+						<label>$LOCALIZE[14036]</label>
+                        <onclick>ActivateWindow(servicesettings)</onclick>
+					</item>
+					<item id="10">
+						<label>$LOCALIZE[130]</label>
+                        <onclick>ActivateWindow(systeminfo)</onclick>
+					</item>
+				</content>
+			</control>
+        </control>
+	 </include>
+
+	 
+	
+</includes>
