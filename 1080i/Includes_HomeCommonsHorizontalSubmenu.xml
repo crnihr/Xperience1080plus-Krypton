@@ -22,6 +22,7 @@
             <effect type="fade" start="100" end="0" time="0" tween="sine" easing="out" />
             <effect type="slide" start="0,0" end="0,-15" time="250" tween="cubic" easing="in" />
         </animation>
+        <animation effect="slide" start="0,0" end="0,295" time="350" tween="sine" easing="out" condition="Skin.HasSetting(HomeScreenHorizontal.Low)">Conditional</animation>
     </include>
 
 	
@@ -143,8 +144,13 @@
 					<label>$LOCALIZE[744]</label>
 						<onclick>ActivateWindow(videos,files,return)</onclick>
 					</item>
+					<item id="11">
+						<label>Fullscreen</label>
+						<onclick>fullscreen</onclick>
+						<visible>Player.HasVideo</visible>
+					</item>
 					<item id="3">
-						<label>Update</label>
+						<label>Update Library</label>
 						<onclick condition="!Library.IsScanningVideo">UpdateLibrary(video)</onclick>
 					</item>
 					<item id="4">
@@ -220,6 +226,11 @@
 						<label>$LOCALIZE[744]</label>
 						<onclick>ActivateWindow(videos,files,return)</onclick>
 					</item>
+					<item id="10">
+						<label>Fullscreen</label>
+						<onclick>fullscreen</onclick>
+						<visible>Player.HasVideo</visible>
+					</item>
 					<item id="3">
 						<label>$LOCALIZE[31943] ($INFO[Window.Property(NextAired.TodayTotal)])</label>
 						<onclick>XBMC.RunScript(script.tv.show.next.aired)</onclick>
@@ -245,7 +256,7 @@
 						<onclick>ActivateWindow(videos,tvshowtags,return)</onclick>
 					</item>
 					<item id="9">
-						<label>Update</label>
+						<label>Update Library</label>
 						<onclick condition="!Library.IsScanningVideo">UpdateLibrary(video)</onclick>
 					</item>
 				</content>
@@ -290,8 +301,13 @@
 						<onclick>ActivateWindow(Music,Files,return)</onclick>
 					</item>
 					<item id="2">
-					<label>$LOCALIZE[135]</label>
+						<label>$LOCALIZE[135]</label>
 						<onclick>ActivateWindow(Music,genres,return)</onclick>
+					</item>
+					<item id="10">
+						<label>Fullscreen</label>
+						<onclick>fullscreen</onclick>
+						<visible>Player.HasAudio</visible>
 					</item>
 					<item id="3">
 						<label>$LOCALIZE[133]</label>
@@ -318,8 +334,8 @@
 						<onclick>ActivateWindow(Music,playlists,return)</onclick>
 					</item>
 					<item id="9">
-						<label>Update</label>
-						<onclick condition="!Library.IsScanningVideo">UpdateLibrary(music)</onclick>
+						<label>Update Library</label>
+						<onclick condition="!Library.IsScanningMusic">UpdateLibrary(music)</onclick>
 					</item>
 				</content>
 			</control>
@@ -434,6 +450,16 @@
 					<item id="3">
 						<label>$LOCALIZE[31111]</label>
                         <onclick>ActivateWindow(skinsettings)</onclick>
+					</item>
+					<item id="16">
+						<label>Menu Low</label>
+						<onclick>Skin.ToggleSetting(HomeScreenHorizontal.Low)</onclick>
+						<visible>!Skin.HasSetting(HomeScreenHorizontal.Low)</visible>
+					</item>
+					<item id="16">
+						<label>Menu Center</label>
+						<onclick>Skin.ToggleSetting(HomeScreenHorizontal.Low)</onclick>
+						<visible>Skin.HasSetting(HomeScreenHorizontal.Low)</visible>
 					</item>
 					<item id="11">
 						<label>Home Metro</label>
