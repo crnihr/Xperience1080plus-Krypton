@@ -439,95 +439,99 @@
 					</control>
 				</focusedlayout>
 				<content>
+					
+					<!-- skin settings -->
 					<item id="1">
-						<label>$LOCALIZE[13200]</label>
-                        <onclick>ActivateWindow(profiles)</onclick>
+						<label>Profile Image</label>
+						<onclick>Skin.ToggleSetting(HideHomeProfileInfo)</onclick>
 					</item>
 					<item id="2">
-						<label>$LOCALIZE[14200]</label>
-                        <onclick>ActivateWindow(PlayerSettings)</onclick>
-					</item>
-					<item id="3">
-						<label>$LOCALIZE[31111]</label>
-                        <onclick>ActivateWindow(skinsettings)</onclick>
-					</item>
-					<item id="16">
-						<label>Menu Low</label>
-						<onclick>Skin.ToggleSetting(HomeScreenHorizontal.Low)</onclick>
-						<visible>!Skin.HasSetting(HomeScreenHorizontal.Low)</visible>
-					</item>
-					<item id="16">
-						<label>Menu Center</label>
-						<onclick>Skin.ToggleSetting(HomeScreenHorizontal.Low)</onclick>
-						<visible>Skin.HasSetting(HomeScreenHorizontal.Low)</visible>
-					</item>
-					<item id="11">
-						<label>Home Metro</label>
-						<onclick>Skin.SetString(HomeScreen,metro)</onclick>
-                        <onclick>Reloadskin</onclick>
-					</item>
-					<item id="12">
-						<label>Hide Arrow</label>
-						<onclick>Skin.ToggleSetting(HideHomeSubmenuArrow.Hide)</onclick>
-						<visible>!Skin.HasSetting(HideHomeSubmenuArrow.Hide)</visible>
-					</item>
-					<item id="12">
-						<label>Show Arrow</label>
-						<onclick>Skin.ToggleSetting(HideHomeSubmenuArrow.Hide)</onclick>
-						<visible>Skin.HasSetting(HideHomeSubmenuArrow.Hide)</visible>
-					</item>
-					<item id="13">
-						<label>Hide Stage</label>
-						<onclick>Skin.ToggleSetting(BackgroundStage.Hide)</onclick>
-						<visible>Skin.HasSetting(BackgroundStage.Hide)</visible>
-					</item>
-					<item id="13">
-						<label>Show Stage</label>
-						<onclick>Skin.ToggleSetting(BackgroundStage.Hide)</onclick>
-						<visible>!Skin.HasSetting(BackgroundStage.Hide)</visible>
-					</item>
-					<item id="14">
 						<label>Hide $LOCALIZE[137]</label>
 						<onclick>Skin.ToggleSetting(MainMenuSearch.Hide)</onclick>
 						<visible>Skin.HasSetting(MainMenuSearch.Hide) + System.HasAddon(script.globalsearch)</visible>
 					</item>
-					<item id="14">
+					<item id="2">
 						<label>Show $LOCALIZE[137]</label>
 						<onclick>Skin.ToggleSetting(MainMenuSearch.Hide)</onclick>
 						<visible>!Skin.HasSetting(MainMenuSearch.Hide) + System.HasAddon(script.globalsearch)</visible>
 					</item>
-					<item id="15">
-						<label>Profile Image</label>
-						<onclick>Skin.ToggleSetting(HideHomeProfileInfo)</onclick>
+					<item id="3">
+						<label>$LOCALIZE[31111] $LOCALIZE[5]</label>
+                        <onclick>ActivateWindow(skinsettings)</onclick>
 					</item>
 					<item id="4">
-						<label>$LOCALIZE[14206]</label>
-                        <onclick>ActivateWindow(InterfaceSettings)</onclick>
+						<label>Home Metro</label>
+						<onclick>Skin.SetString(HomeScreen,metro)</onclick>
+                        <onclick>Reloadskin</onclick>
 					</item>
 					<item id="5">
-						<label>$LOCALIZE[14211]</label>
-                        <onclick>ActivateWindow(MediaSettings)</onclick>
+						<label>Menu Low</label>
+						<onclick>Skin.ToggleSetting(HomeScreenHorizontal.Low)</onclick>
+						<visible>!Skin.HasSetting(HomeScreenHorizontal.Low)</visible>
+					</item>
+					<item id="5">
+						<label>Menu Center</label>
+						<onclick>Skin.ToggleSetting(HomeScreenHorizontal.Low)</onclick>
+						<visible>Skin.HasSetting(HomeScreenHorizontal.Low)</visible>
 					</item>
 					<item id="6">
-						<label>$LOCALIZE[24001]</label>
-                        <onclick>ActivateWindow(addonbrowser)</onclick>
+						<label>Hide Arrow</label>
+						<onclick>Skin.ToggleSetting(HideHomeSubmenuArrow.Hide)</onclick>
+						<visible>!Skin.HasSetting(HideHomeSubmenuArrow.Hide)</visible>
+					</item>
+					<item id="6">
+						<label>Show Arrow</label>
+						<onclick>Skin.ToggleSetting(HideHomeSubmenuArrow.Hide)</onclick>
+						<visible>Skin.HasSetting(HideHomeSubmenuArrow.Hide)</visible>
 					</item>
 					<item id="7">
-						<label>$LOCALIZE[31220]</label>
-                        <onclick>ActivateWindow(pvrsettings)</onclick>
+						<label>Hide Stage</label>
+						<onclick>Skin.ToggleSetting(BackgroundStage.Hide)</onclick>
+						<visible>Skin.HasSetting(BackgroundStage.Hide)</visible>
 					</item>
-					<item id="8">
-						<label>$LOCALIZE[13000]</label>
-                        <onclick>ActivateWindow(systemsettings)</onclick>
+					<item id="7">
+						<label>Show Stage</label>
+						<onclick>Skin.ToggleSetting(BackgroundStage.Hide)</onclick>
+						<visible>!Skin.HasSetting(BackgroundStage.Hide)</visible>
 					</item>
-					<item id="9">
-						<label>$LOCALIZE[14036]</label>
-                        <onclick>ActivateWindow(servicesettings)</onclick>
-					</item>
-					<item id="10">
-						<label>$LOCALIZE[130]</label>
-                        <onclick>ActivateWindow(systeminfo)</onclick>
-					</item>
+					
+					<!-- kodi settings -->
+					<!-- <item id="8"> -->
+						<!-- <label>$LOCALIZE[14206]</label> -->
+                        <!-- <onclick>ActivateWindow(InterfaceSettings)</onclick> -->
+					<!-- </item> -->
+					<!-- <item id="9"> -->
+						<!-- <label>$LOCALIZE[14200]</label> -->
+                        <!-- <onclick>ActivateWindow(PlayerSettings)</onclick> -->
+					<!-- </item> -->
+					<!-- <item id="10"> -->
+						<!-- <label>$LOCALIZE[14211]</label> -->
+                        <!-- <onclick>ActivateWindow(MediaSettings)</onclick> -->
+					<!-- </item> -->
+					<!-- <item id="11"> -->
+						<!-- <label>$LOCALIZE[31220]</label> -->
+                        <!-- <onclick>ActivateWindow(pvrsettings)</onclick> -->
+					<!-- </item> -->
+					<!-- <item id="12"> -->
+						<!-- <label>$LOCALIZE[14036]</label> -->
+                        <!-- <onclick>ActivateWindow(servicesettings)</onclick> -->
+					<!-- </item> -->
+					<!-- <item id="13"> -->
+						<!-- <label>$LOCALIZE[13200]</label> -->
+                        <!-- <onclick>ActivateWindow(profiles)</onclick> -->
+					<!-- </item> -->
+					<!-- <item id="14"> -->
+						<!-- <label>$LOCALIZE[24001]</label> -->
+                        <!-- <onclick>ActivateWindow(addonbrowser)</onclick> -->
+					<!-- </item> -->
+					<!-- <item id="15"> -->
+						<!-- <label>$LOCALIZE[13000]</label> -->
+                        <!-- <onclick>ActivateWindow(systemsettings)</onclick> -->
+					<!-- </item> -->
+					<!-- <item id="16"> -->
+						<!-- <label>$LOCALIZE[130]</label> -->
+                        <!-- <onclick>ActivateWindow(systeminfo)</onclick> -->
+					<!-- </item> -->
 				</content>
 			</control>
         </control>
