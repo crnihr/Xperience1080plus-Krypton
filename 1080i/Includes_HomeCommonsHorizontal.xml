@@ -368,6 +368,7 @@
 				<width>1920</width>
 				<height>1080</height>
 				
+				<onup condition="Container(20).HasFocus(2)">Skin.ToggleSetting(HomeScreenHorizontal.Low)</onup>
 				<onup condition="Container(20).HasFocus(3)">ActivateWindow(videos,RecentlyAddedMovies,return)</onup>
 				<onup condition="Container(20).HasFocus(4)">ActivateWindow(videos,RecentlyAddedEpisodes,return)</onup>
 				<onup condition="Container(20).HasFocus(5)">ActivateWindow(music,RecentlyPlayedAlbums,return)</onup>
@@ -430,7 +431,7 @@
 							<height>38</height>
 							<width>19</width>
 							<texture>windows/home/submenu-arrow.png</texture>
-							<visible>!Skin.HasSetting(HideHomeSubmenuArrow.Hide) + [Container(20).HasFocus(3) | Container(20).HasFocus(4) | Container(20).HasFocus(5)]</visible>
+							<visible>!Skin.HasSetting(HideHomeSubmenuArrow.Hide) + [Container(20).HasFocus(2) | Container(20).HasFocus(3) | Container(20).HasFocus(4) | Container(20).HasFocus(5)]</visible>
 						</control>
 						<control type="label">
 							<font>Font-Condensed-S38-B</font>
