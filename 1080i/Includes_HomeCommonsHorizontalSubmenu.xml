@@ -112,7 +112,7 @@
 		<control type="group">
 			<include>SubMenuAnimationHorizontal</include>
 			<include>listEndAnimation</include>
-			<visible>![Container(20).OnNext | Container(20).OnPrevious] + !IsEmpty(Container(20).ListItem.Property(movies))</visible>
+			<visible>![Container(20).OnNext | Container(20).OnPrevious] + Container(20).HasFocus(3)</visible>
 
 			<control type="image">
 				<posx>0</posx>
@@ -194,7 +194,7 @@
 		<control type="group">
 			<include>SubMenuAnimationHorizontal</include>
 			<include>listEndAnimation</include>
-			<visible>![Container(20).OnNext | Container(20).OnPrevious] + !IsEmpty(Container(20).ListItem.Property(tvshows))</visible>
+			<visible>![Container(20).OnNext | Container(20).OnPrevious] + Container(20).HasFocus(4)</visible>
 
 			<control type="image">
 				<posx>0</posx>
@@ -272,7 +272,7 @@
 		<control type="group">
 			<include>SubMenuAnimationHorizontal</include>
 			<include>listEndAnimation</include>
-			<visible>![Container(20).OnNext | Container(20).OnPrevious] + !IsEmpty(Container(20).ListItem.Property(music))</visible>
+			<visible>![Container(20).OnNext | Container(20).OnPrevious] + Container(20).HasFocus(5)</visible>
 
 			<control type="image">
 				<posx>0</posx>
@@ -415,7 +415,7 @@
 		<control type="group">
 			<include>SubMenuAnimationHorizontal</include>
 			<include>listEndAnimation</include>
-            <visible>![Container(20).OnNext | Container(20).OnPrevious] + !IsEmpty(Container(20).ListItem.Property(settings))</visible>
+            <visible>![Container(20).OnNext | Container(20).OnPrevious] + Container(20).HasFocus(2)</visible>
 			
 			<control type="image">
 				<posx>0</posx>
