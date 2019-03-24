@@ -235,6 +235,10 @@
 						<label>$LOCALIZE[31943] ($INFO[Window.Property(NextAired.TodayTotal)])</label>
 						<onclick>XBMC.RunScript(script.tv.show.next.aired)</onclick>
 					</item>
+					<item id="11">
+						<label>In Progress</label>
+						<onclick>ActivateWindow(videos,InProgressTvShows,return)</onclick>
+					</item>
 					<item id="4">
 						<label>$LOCALIZE[135]</label>
 						<onclick>ActivateWindow(videos,tvshowgenres,return)</onclick>
