@@ -28,6 +28,6 @@
         <include condition="String.IsEqual(Skin.String(HomeScreen),horizontal)">HomeShutdownFavouritesButtonsHorizontal</include>
 		
 		<!-- Shared -->
-        <include>Common-Home-Info</include>
+        <include>CommonHomeInfo</include>
     </controls>
 </window>
