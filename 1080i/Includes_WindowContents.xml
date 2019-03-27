@@ -122,25 +122,25 @@
         <control type="image">
             <include>FullscreenDimensions</include>
             <include>Animation_FanartFade</include>
-            <fadetime>400</fadetime>
+            <fadetime>600</fadetime>
             <texture background="true" fallback=".">$INFO[Container(20).ListItem.property(single)]</texture>
-            <visible>!String.IsEmpty(Container(20).ListItem.property(single)) + ![Skin.HasSetting(BackgroundVideo) + Player.HasVideo] + !Container(20).Scrolling + !Window.IsActive(favourites)</visible>
+            <visible>!String.IsEmpty(Container(20).ListItem.property(single)) + ![Container(20).HasFocus(5) + Player.HasAudio] + ![Skin.HasSetting(BackgroundVideo) + Player.HasVideo] + !Container(20).Scrolling + !Window.IsActive(favourites)</visible>
         </control>
         <control type="multiimage">
             <include>FullscreenDimensions</include>
             <timeperimage>30000</timeperimage>
             <randomize>true</randomize>
-            <fadetime>400</fadetime>
+            <fadetime>600</fadetime>
             <loop>true</loop>
             <include>Animation_FanartFade</include>
             <imagepath background="true" fallback=".">$INFO[Container(20).ListItem.property(multi)]</imagepath>
-            <visible>!String.IsEmpty(Container(20).ListItem.property(multi)) + ![Skin.HasSetting(BackgroundVideo) + Player.HasVideo] + !Container(20).Scrolling + !Window.IsActive(favourites)</visible>
+            <visible>!String.IsEmpty(Container(20).ListItem.property(multi)) + ![Container(20).HasFocus(5) + Player.HasAudio] + ![Skin.HasSetting(BackgroundVideo) + Player.HasVideo] + !Container(20).Scrolling + !Window.IsActive(favourites)</visible>
         </control>
         <control type="image">
             <description>Music npl fanart</description>
             <include>FullscreenDimensions</include>
             <texture>$INFO[Player.Art(fanart)]</texture>
-            <fadetime>400</fadetime>
+            <fadetime>600</fadetime>
             <include>Animation_FanartFade</include>
             <visible>Container(20).HasFocus(5) + Player.HasAudio</visible>
         </control>
@@ -148,7 +148,7 @@
             <description>Search results + video info fanart</description>
             <include>FullscreenDimensions</include>
             <texture background="true">$INFO[Window(Home).Property(fanart_image)]</texture>
-            <fadetime>400</fadetime>
+            <fadetime>500</fadetime>
             <include>Animation_FanartFade</include>
             <visible>!String.IsEmpty(Window(Home).property(fanart_image)) + ![Skin.HasSetting(BackgroundVideo) + Player.HasVideo] + !Window.IsActive(favourites) + [[!Skin.HasSetting(HideFanart) + Window.IsActive(movieinformation)] | !Window.IsActive(movieinformation)]</visible>
         </control>
@@ -171,9 +171,9 @@
             <control type="multiimage">
                 <description>Custom Wallpaper Image</description>
                 <include>FullscreenDimensions</include>
-                <timeperimage>30000</timeperimage>
+                <timeperimage>10000</timeperimage>
                 <randomize>true</randomize>
-                <fadetime>400</fadetime>
+                <fadetime>600</fadetime>
                 <loop>true</loop>
                 <imagepath background="true">$INFO[Skin.String(GlobalBackdropMulti)]</imagepath>
                 <include>visiblehidefadeinfo</include>
@@ -198,7 +198,7 @@
             <aspectratio>scale</aspectratio>
             <include>FullscreenDimensions</include>
             <texture background="true">$INFO[ListItem.FileNameAndPath]</texture>
-            <fadetime>400</fadetime>
+            <fadetime>500</fadetime>
             <include>Animation_FanartFade</include>
             <visible>Window.IsVisible(pictures) + Container.HasFiles + ![Skin.HasSetting(BackgroundVideo) + Player.HasVideo] + !Window.IsActive(favourites)</visible>
         </control>
@@ -206,7 +206,7 @@
             <description>List Panel fanart</description>
             <include>FullscreenDimensions</include>
             <texture background="true">$VAR[ViewFanart]</texture>
-            <fadetime>400</fadetime>
+            <fadetime>500</fadetime>
             <include>Animation_FanartFade</include>
             <visible>!Skin.HasSetting(HideFanart) + ![Skin.HasSetting(BackgroundVideo) + Player.HasVideo] + !Window.IsActive(favourites)</visible>
         </control>
@@ -216,7 +216,7 @@
             <description>Music OSD fanart</description>
             <include>FullscreenDimensions</include>
             <texture background="true">$VAR[OSDMusicFanart]</texture>
-            <fadetime>400</fadetime>
+            <fadetime>500</fadetime>
             <include>Animation_FanartFade</include>
             <animation effect="fade" start="100" end="65" time="0" condition="Skin.HasSetting(OSDVisualisation.ShowFanart)">Conditional</animation>
             <visible>!Skin.HasSetting(ArtistSlideShow.Enabled) + ![Skin.HasSetting(OSDVisualisation.Enabled) + !Skin.HasSetting(OSDVisualisation.ShowFanart)]</visible>
@@ -224,9 +224,9 @@
         <control type="multiimage">
             <aspectratio>keep</aspectratio>
             <include>FullscreenDimensions</include>
-            <timeperimage>30000</timeperimage>
+            <timeperimage>10000</timeperimage>
             <randomize>true</randomize>
-            <fadetime>400</fadetime>
+            <fadetime>600</fadetime>
             <loop>true</loop>
             <include>Animation_FanartFade</include>
             <imagepath background="true">$INFO[Window(Visualisation).Property(ArtistSlideshow)]</imagepath>
@@ -277,7 +277,7 @@
             <texture background="true">fade/overlay.png</texture>
             <animation effect="fade" time="300" start="0" end="100" tween="sine" easing="out">Visible</animation>
             <animation effect="fade" time="300" start="100" end="0" tween="sine" easing="in">Hidden</animation>
-            <visible>[[String.IsEmpty(Window(3004).Property(ChooseArt)) | ![Window.IsActive(filebrowser) | Window.IsActive(selectdialog) | Window.IsActive(DialogSelect.xml) | Window.IsActive(progressdialog)]] + [Window.IsActive(filebrowser) | Window.IsActive(selectdialog) | Window.IsActive(DialogSelect.xml) | Window.IsActive(progressdialog)]] | Window.IsActive(contentsettings) | Window.IsActive(addonsettings) | Window.IsActive(virtualkeyboard) | Window.IsActive(playercontrols) | Window.IsActive(profilesettings) | Window.IsActive(numericinput) | Window.IsActive(okdialog) | Window.IsActive(yesnodialog)</visible>
+            <visible>[[String.IsEmpty(Window(Home).Property(ChooseArt)) | ![Window.IsActive(filebrowser) | Window.IsActive(selectdialog) | Window.IsActive(DialogSelect.xml) | Window.IsActive(progressdialog)]] + [Window.IsActive(filebrowser) | Window.IsActive(selectdialog) | Window.IsActive(DialogSelect.xml) | Window.IsActive(progressdialog)]] | Window.IsActive(contentsettings) | Window.IsActive(addonsettings) | Window.IsActive(virtualkeyboard) | Window.IsActive(playercontrols) | Window.IsActive(profilesettings) | Window.IsActive(numericinput) | Window.IsActive(okdialog) | Window.IsActive(yesnodialog)</visible>
         </control>
     </include>
     <include name="FadeBackgroundButtonMenu">
@@ -414,17 +414,4 @@
         <value condition="Window.IsActive(songinformation)">$LOCALIZE[658]</value>
         <value>$LOCALIZE[1214]$INFO[Container.FolderName,: ,]</value>
     </variable>
-
-    <include name="ZOrder0">
-        <zorder>0</zorder>
-    </include>
-
-    <include name="ZOrder2">
-        <zorder>2</zorder>
-    </include>
-
-    <include name="ZOrder3">
-        <zorder>3</zorder>
-    </include>
-
 </includes>
